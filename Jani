@@ -1,0 +1,87 @@
+rootProject.name = "WePlayVoiceApp"
+include ':app'buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.4.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    namespace "com.weplay.app"
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.weplay.app"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    implementation "androidx.core:core-ktx:1.9.0"
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.9.0"
+}<manifest package="com.weplay.app">
+
+    <application
+        android:label="WePlay Clone"
+        android:theme="@style/Theme.AppCompat.Light">
+
+        <activity android:name=".VoiceRoomActivity" />
+        
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+}class VoiceRoomActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_voice_room)
+    }
+}object GiftManager {
+    fun sendGift(userId: String, giftId: Int) {
+        // future: coins, animation, sound
+    }
+}<TextView
+    android:text="Join Voice Room"
+    android:textSize="20sp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+</manifest><TextView
+    android:text="Voice Room Live"
+    android:textSize="22sp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
